@@ -1,13 +1,13 @@
 PROJECT 			= barebns1
 
-BAREBNS1_ROOT		= ..\..\..
+BAREBNS1_ROOT			= ..\..
 
 INC_DIR				= $(BAREBNS1_ROOT)\include
 SRC_DIR 			= $(BAREBNS1_ROOT)\src
 RES_DIR				= $(BAREBNS1_ROOT)\res
 
-BIN_DIR 			= $(BAREBNS1_ROOT)\out\bin
-OBJ_DIR 			= $(BAREBNS1_ROOT)\out\obj
+BIN_DIR 			= $(BAREBNS1_ROOT)\..\..\out\demos\$(PROJECT)\bin
+OBJ_DIR 			= $(BAREBNS1_ROOT)\..\..\out\demos\$(PROJECT)\obj
 
 C_FLAGS				= -MT -W3 -GX -Zi -YX -Od
 
@@ -18,7 +18,7 @@ C_FLAGS				= -MT -W3 -GX -Zi -YX -Od
 
 
 LD_FLAGS 			= -subsystem:console
-LD_LIBS				= user32.lib $(CROCON_ROOT)\out\bin\crocon.lib
+LD_LIBS				= user32.lib $(CROCON_ROOT)\out\library\bin\crocon.lib
 
 CC_FLAGS			= $(C_FLAGS) -I$(INC_DIR) -I$(CROCON_ROOT)\include \
 					  -DWIN32 -DWINDOWS
