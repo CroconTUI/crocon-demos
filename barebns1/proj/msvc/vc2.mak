@@ -20,7 +20,7 @@ C_FLAGS				= -MT -W3 -GX -Zi -YX -Od
 LD_FLAGS 			= -subsystem:console
 LD_LIBS				= user32.lib $(CROCON_ROOT)\out\library\bin\crocon.lib
 
-CC_FLAGS			= $(C_FLAGS) -I$(INC_DIR) -I$(CROCON_ROOT)\include \
+CC_FLAGS			= $(C_FLAGS) -I$(INC_DIR) -I$(CROCON_ROOT)\library\include \
 					  -DWIN32 -DWINDOWS
 
 CC_FLAGS_DLL		= $(C_FLAGS) -I$(INC_DIR)
@@ -32,21 +32,23 @@ OUT_EXE				= $(BIN_DIR)\barebns1.exe
 
 OBJECTS 			= $(OBJ_DIR)\main.obj
 
-all: $(OUT_EXE)
+all: prepare $(OUT_EXE)
 
 $(OUT_EXE): $(OBJECTS)
 	@if not exist $(BIN_DIR) mkdir $(BIN_DIR)
 	$(LINKER) $(LD_FLAGS) $(LD_LIBS) -out:$@ $**
 
 {$(SRC_DIR)}.c{$(OBJ_DIR)}.obj:
-	@if not exist $(BAREBNS1_ROOT)\out mkdir $(BAREBNS1_ROOT)\out
-	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
 	$(CC) $(CC_FLAGS) -c $< -Fo$@
 
 {$(SRC_DIR)\os\win32}.c{$(OBJ_DIR)}.obj:
-	@if not exist $(BAREBNS1_ROOT)\out mkdir $(BAREBNS1_ROOT)\out
-	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
 	$(CC) $(CC_FLAGS) -c $< -Fo$@
+
+prepare:
+	@if not exist $(CROCON_ROOT)\out mkdir $(CROCON_ROOT)\out
+	@if not exist $(CROCON_ROOT)\out\demos mkdir $(CROCON_ROOT)\out\demos
+	@if not exist $(CROCON_ROOT)\out\demos\$(PROJECT) mkdir $(CROCON_ROOT)\out\demos\$(PROJECT)
+	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
 
 clean:
 	-del $(OBJ_DIR)\*.obj
