@@ -18,7 +18,7 @@ int main() {
 
 	crocon_cprintf(
 		COLOR_BRIGHT_GREEN, 
-		"\r\nCrocon Test Application\r\n"
+		"Crocon Test Application\r\n"
 	);
 
 	crocon_getch();
