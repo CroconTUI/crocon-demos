@@ -7,8 +7,7 @@ int main() {
 	int crocon_result;
 	
 	crocon_result = crocon_getver(&crocon_ver);
-	
-	printf("\r\nCrocon Test Application\r\n");
+
 	printf(
 		"Version: %d.%d.%d\r\n\r\n", 
 		crocon_ver.major, crocon_ver.minor, crocon_ver.patch
@@ -16,5 +15,17 @@ int main() {
 	
 	crocon_initscr();
 	crocon_settitle("Crocon Test Application");
+
+	crocon_cprintf(
+		COLOR_BRIGHT_GREEN, 
+		"\r\nCrocon Test Application\r\n"
+	);
+
+	crocon_getch();
+
+	crocon_fillchar('1', 8, 8, 4, 4);
+
+	crocon_getch();
+
 	return 0;
 }
