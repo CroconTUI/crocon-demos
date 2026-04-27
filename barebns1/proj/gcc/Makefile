@@ -31,7 +31,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(C_FLAGS) -I$(INC_DIRS) -I$(CROCON_ROOT)/library/include -c $< -o $@
 
 $(BIN_DIR)/$(PROJECT).bin: $(OBJECTS)
-	$(CC) -DUNIX -L$(CROCON_ROOT)/out/library/bin -lcrocon -o $@ $(OBJECTS)
+	$(CC) $(OBJECTS) -DUNIX -L$(CROCON_ROOT)/out/library/bin -lcrocon -o $@
 
 clean:
 	rm -rf $(OBJ_DIR) $(LIB_DIR)
