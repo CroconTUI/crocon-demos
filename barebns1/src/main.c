@@ -16,7 +16,7 @@ int main() {
 		"Crocon Test Application\r\n"
 	);
 	crocon_mvcprintf2(
-		0, 1, COLOR_WHITE, 80,
+		0, 1, COLOR_TRANSPARENT, 80,
 		"Version: %d.%d.%d\r\n", 
 		crocon_ver.major, crocon_ver.minor, crocon_ver.patch
 	);
