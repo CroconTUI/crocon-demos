@@ -16,18 +16,23 @@ SRC_DIRS        = $(SRC_DIR)
 
 ifeq ($(CROCON_LEGACY),true)
 
+LD_ARCH         =  -m32
+LD_FLAGS	=  -Wl,--oformat=a.out-i386-linux
+
 ifeq ($(CROCON_DEBUG),true)
-C_FLAGS         =  -O0 -fPIC -DUNIX -DUNIX_LEGACY -DHAVE_VPRINTF -g3 -fno-omit-frame-pointer -Wl,--oformat=a.out-i386-linux
+C_FLAGS         =  -m32 -O0 -fPIC -DUNIX -DUNIX_LEGACY -DHAVE_VPRINTF -g3 -fno-omit-frame-pointer
 else
-C_FLAGS         =  -O2 -fPIC -DUNIX -DUNIX_LEGACY -DHAVE_VPRINTF -Wl,--oformat=a.out-i386-linux
+C_FLAGS         =  -m32 -O2 -fPIC -DUNIX -DUNIX_LEGACY -DHAVE_VPRINTF -Wl,--oformat=a.out-i386-linux
 endif
 
 else
 
+LD_FLAGS        =?
+
 ifeq ($(CROCON_DEBUG),true)
 C_FLAGS         =  -O0 -fPIC -DUNIX -DHAVE_VPRINTF -g3 -fno-omit-frame-pointer -fno-optimize-sibling-calls 
 else
-C_FLAGS         =  -O2 -fPIC -DUNIX -DHAVE_VPRINTF
+C_FLAGS         =  -O2 -fPIC -DUNIX -DHAVE_VPRINTF 
 endif
 
 endif
@@ -49,7 +54,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(C_FLAGS) -I$(INC_DIRS) -I$(CROCON_ROOT)/library/include -c $< -o $@
 
 $(BIN_DIR)/$(PROJECT).bin: $(OBJECTS)
-	$(CC) $(OBJECTS) -DUNIX -L$(CROCON_ROOT)/out/library/bin -lcrocon -o $@
+	$(CC) $(LD_ARCH) $(OBJECTS) -DUNIX -L$(CROCON_ROOT)/out/library/bin -lcrocon -o $@ $(LD_FLAGS)
 
 clean:
 	rm -rf $(OBJ_DIR) $(LIB_DIR)
