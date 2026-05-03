@@ -15,7 +15,7 @@ RES_DIR         = $(DEMO_APP_ROOT)/res
 SRC_DIRS        = $(SRC_DIR)
 
 ifeq ($(CROCON_DEBUG),true)
-C_FLAGS         =  -O0 -fPIC -DUNIX -g3 -fsanitize=address
+C_FLAGS         =  -O0 -fPIC -DUNIX -g3
 else
 C_FLAGS         =  -O2 -fPIC -DUNIX
 endif
