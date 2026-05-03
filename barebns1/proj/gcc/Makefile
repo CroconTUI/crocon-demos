@@ -3,6 +3,8 @@ PROJECT         = barebns1
 DEMO_APP_ROOT   = ../..
 CROCON_ROOT     = ../../../..
 
+CROCON_DEBUG    =? false
+
 PREFIX          = /usr/local
 INC_DIRS        = $(DEMO_APP_ROOT)/include
 
@@ -12,10 +14,14 @@ RES_DIR         = $(DEMO_APP_ROOT)/res
 
 SRC_DIRS        = $(SRC_DIR)
 
+ifeq ($(CROCON_DEBUG),true)
+C_FLAGS         =  -O0 -fPIC -DUNIX -g3 -fsanitize=address
+else
+C_FLAGS         =  -O2 -fPIC -DUNIX
+endif
+
 BIN_DIR         = $(CROCON_ROOT)/out/demos/$(PROJECT)/bin
 OBJ_DIR         = $(CROCON_ROOT)/out/demos/$(PROJECT)/obj
-
-C_FLAGS         = -O2 -fPIC -DUNIX
 
 SOURCES         = $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.c))
 
