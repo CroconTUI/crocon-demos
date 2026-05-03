@@ -24,8 +24,6 @@ endif
 
 else
 
-LD_FLAGS        =?
-
 ifeq ($(CROCON_DEBUG),true)
 C_FLAGS         =  -O0 -fPIC -DUNIX -DHAVE_VPRINTF -g3 -fno-omit-frame-pointer -fno-optimize-sibling-calls 
 else
