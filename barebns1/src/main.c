@@ -17,8 +17,18 @@ int main() {
 	);
 	crocon_mvcprintf2(
 		0, 1, COLOR_TRANSPARENT, 80,
-		"Version: %d.%d.%d\r\n", 
+		"Version: %d.%d.%d", 
 		crocon_ver.major, crocon_ver.minor, crocon_ver.patch
+	);
+
+	crocon_mvcprintf(
+		0, 3, COLOR_BRIGHT_CYAN,
+		"CONSOLE BUFFER METRICS"
+	);
+	crocon_mvcprintf2(
+		0, 4, COLOR_TRANSPARENT, 80,
+		"Width: %d | Height: %d",
+		stdscr->metrics.width, stdscr->metrics.height
 	);
 
 	crocon_getch();
@@ -27,6 +37,13 @@ int main() {
 	crocon_fillcolor(8, 8, 4, 4, COLOR_BLACK, COLOR_GRAY);
 
 	crocon_getch();
+
+	crocon_freescr();
+
+	printf(
+		"Here we have shown how a demo application works using the CroconTUI framework."
+		"\r\n\r\nMore details at https://github.com/CroconTUI/lib.\r\n"
+	);
 
 	return 0;
 }
