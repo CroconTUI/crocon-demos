@@ -23,9 +23,9 @@ LD_LIBS				= user32.lib $(CROCON_ROOT)\out\library\bin\crocon.lib
 CC_FLAGS			= $(C_FLAGS) -I$(INC_DIR) -I$(CROCON_ROOT)\library\include \
 					  -DWIN32 -DWINDOWS
 
-CC_FLAGS_DLL			= $(C_FLAGS) -I$(INC_DIR)
+CC_FLAGS_DLL		= $(C_FLAGS) -I$(INC_DIR)
 
-CC				= cl -nologo
+CC					= cl -nologo
 LINKER				= link.exe -nologo
 
 OUT_EXE				= $(BIN_DIR)\barebns1.exe

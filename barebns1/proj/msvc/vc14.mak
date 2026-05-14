@@ -12,8 +12,8 @@ OBJ_DIR             = $(CROCON_ROOT)\out\demos\$(PROJECT)\obj
 C_FLAGS             = -MT -W3 -Zi -EHsc -O2
 
 !ifdef DEBUG
-C_FLAGS             = -MT -W3 -EHsc -Od -Z7 -DDEBUG
-LD_FLAGS            = -debug -pdb:none
+C_FLAGS         = -MT -W3 -EHsc -Od -Z7 -DDEBUG
+LD_FLAGS        = -debug -pdb:none
 !endif
 
 
@@ -21,7 +21,7 @@ LD_FLAGS            = -subsystem:console
 LD_LIBS             = user32.lib $(CROCON_ROOT)\out\library\bin\crocon.lib
 
 CC_FLAGS            = $(C_FLAGS) -I$(INC_DIR) -I$(CROCON_ROOT)\library\include \
-                        -DWIN32 -DWINDOWS
+                      -DWIN32 -DWINDOWS
 
 CC_FLAGS_DLL        = $(C_FLAGS) -I$(INC_DIR)
 
