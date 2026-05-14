@@ -9,11 +9,11 @@ RES_DIR				= $(BAREBNS1_ROOT)\res
 BIN_DIR 			= $(CROCON_ROOT)\out\demos\$(PROJECT)\bin
 OBJ_DIR 			= $(CROCON_ROOT)\out\demos\$(PROJECT)\obj
 
-C_FLAGS				= -MT -W3 -Zi -EHsc -Od
+C_FLAGS				= -MT -W3 -Zi -EHsc -O2
 
 !ifdef DEBUG
-	C_FLAGS 	= -Z7 -DDEBUG
-	LD_FLAGS	= -debug -pdb:none
+C_FLAGS 	                = -MT -W3 -EHsc -Od -Z7 -DDEBUG
+LD_FLAGS	                = -debug -pdb:none
 !endif
 
 

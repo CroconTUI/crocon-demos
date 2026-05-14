@@ -48,7 +48,7 @@ int main() {
 
 	crocon_createwin(&win);
 
-	crocon_mvcprintf2(36, 11, COLOR_BLUE, COLOR_BRIGHT_CYAN, "Hello World!");
+	crocon_mvcprintf2(20, 11, COLOR_BLUE, COLOR_BRIGHT_CYAN, "Hello World!");
 
 	crocon_getch();
 
