@@ -36,6 +36,7 @@ all: prepare $(OUT_EXE)
 
 $(OUT_EXE): $(OBJECTS)
 	$(LINKER) $(LD_FLAGS) $(LD_LIBS) -out:$@ $**
+	copy $(CROCON_ROOT)\out\library\bin\crocon.dll $(BIN_DIR)\crocon.dll
 
 {$(SRC_DIR)}.c{$(OBJ_DIR)}.obj:
 	$(CC) $(CC_FLAGS) -c $< -Fo$@
