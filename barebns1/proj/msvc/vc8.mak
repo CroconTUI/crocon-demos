@@ -1,36 +1,36 @@
-PROJECT             = barebns1
+PROJECT 			= barebns1
 
-BAREBNS1_ROOT       = ..\..
+BAREBNS1_ROOT			= ..\..
 
-INC_DIR             = $(BAREBNS1_ROOT)\include
-SRC_DIR             = $(BAREBNS1_ROOT)\src
-RES_DIR             = $(BAREBNS1_ROOT)\res
+INC_DIR				= $(BAREBNS1_ROOT)\include
+SRC_DIR 			= $(BAREBNS1_ROOT)\src
+RES_DIR				= $(BAREBNS1_ROOT)\res
 
-BIN_DIR             = $(CROCON_ROOT)\out\demos\$(PROJECT)\bin
-OBJ_DIR             = $(CROCON_ROOT)\out\demos\$(PROJECT)\obj
+BIN_DIR 			= $(CROCON_ROOT)\out\demos\$(PROJECT)\bin
+OBJ_DIR 			= $(CROCON_ROOT)\out\demos\$(PROJECT)\obj
 
-C_FLAGS             = -MT -W3 -Zi -EHsc -O2
+C_FLAGS				= -MT -W3 -Zi -EHsc -O2
 
 !ifdef DEBUG
-C_FLAGS             = -MT -W3 -EHsc -Od -Z7 -DDEBUG
-LD_FLAGS            = -debug -pdb:none
+C_FLAGS 	                = -MT -W3 -EHsc -Od -Z7 -DDEBUG
+LD_FLAGS	                = -debug -pdb:none
 !endif
 
 
-LD_FLAGS            = -subsystem:console
-LD_LIBS             = user32.lib $(CROCON_ROOT)\out\library\bin\crocon.lib
+LD_FLAGS 			= -subsystem:console
+LD_LIBS				= user32.lib $(CROCON_ROOT)\out\library\bin\crocon.lib
 
-CC_FLAGS            = $(C_FLAGS) -I$(INC_DIR) -I$(CROCON_ROOT)\library\include \
-                        -DWIN32 -DWINDOWS
+CC_FLAGS			= $(C_FLAGS) -I$(INC_DIR) -I$(CROCON_ROOT)\library\include \
+				  -DWIN32 -DWINDOWS
 
-CC_FLAGS_DLL        = $(C_FLAGS) -I$(INC_DIR)
+CC_FLAGS_DLL			= $(C_FLAGS) -I$(INC_DIR)
 
-CC                  = cl -nologo
-LINKER              = link.exe -nologo
+CC				= cl -nologo
+LINKER				= link.exe -nologo
 
-OUT_EXE             = $(BIN_DIR)\barebns1.exe
+OUT_EXE				= $(BIN_DIR)\barebns1.exe
 
-OBJECTS             = $(OBJ_DIR)\main.obj
+OBJECTS 			= $(OBJ_DIR)\main.obj
 
 all: prepare $(OUT_EXE)
 
