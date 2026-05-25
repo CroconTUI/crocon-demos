@@ -12,7 +12,7 @@ int main() {
 	
 	crocon_initscr();
 	crocon_settitle("Crocon Test Application");
-	crocon_hidecurs();
+	crocon_hidecurs(1);
 
 	crocon_cprintf(
 		COLOR_BRIGHT_GREEN, 
