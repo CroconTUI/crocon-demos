@@ -14,22 +14,22 @@ RES_DIR         = $(DEMO_APP_ROOT)/res
 
 SRC_DIRS        = $(SRC_DIR)
 
+ifeq ($(CROCON_AOUT),true)
+C_PIE           = -fno-pie
+else
+C_PIE           = -fPIC
+endif
+
 ifeq ($(CROCON_LEGACY),true)
-
-ifeq ($(CROCON_DEBUG),true)
-C_FLAGS         =  -O0 -fPIC -DUNIX -DUNIX_LEGACY -DHAVE_VPRINTF -g3 -fno-omit-frame-pointer
+C_LEGACY = -DUNIX_LEGACY
 else
-C_FLAGS         =  -O2 -fPIC -DUNIX -DUNIX_LEGACY -DHAVE_VPRINTF
+C_LEGACY = -fno-optimize-sibling-calls
 endif
 
-else
-
 ifeq ($(CROCON_DEBUG),true)
-C_FLAGS         =  -O0 -fPIC -DUNIX -DHAVE_VPRINTF -g3 -fno-omit-frame-pointer -fno-optimize-sibling-calls 
+C_FLAGS         =  -O0 $(C_PIE) -DUNIX $(C_LEGACY) -DHAVE_VPRINTF -g3 -fno-omit-frame-pointer
 else
-C_FLAGS         =  -O2 -fPIC -DUNIX -DHAVE_VPRINTF 
-endif
-
+C_FLAGS         =  -O2 $(C_PIE) -DUNIX $(C_LEGACY) -DHAVE_VPRINTF
 endif
 
 BIN_DIR         = $(CROCON_ROOT)/out/demos/$(PROJECT)/bin
